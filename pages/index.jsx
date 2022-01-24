@@ -119,7 +119,7 @@ const Home = ({ data }) => {
     setEmail("");
     setState("");
     setCity("");
-    setListCity("");
+    setListCity([]);
     setProduct("");
     setMessage("");
     setNewsLater(false);

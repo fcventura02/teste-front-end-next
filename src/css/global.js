@@ -22,6 +22,6 @@ export default createGlobalStyle`
 	border-radius: 8px;
 	border: 4px solid transparent;
 	background-clip: content-box;
-	background-color: var(--blue);
+	background-color: ${({theme})=>theme.colors.blue};
 }
 `;
