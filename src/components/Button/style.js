@@ -22,7 +22,7 @@ export const ButtonCloseStyle = styled(ButtonStyle)`
   &:after{
     display: inline-block;
     content: "x"; 
-    font-size: 2rem /*20px*/;
-    line-height: 2.5rem /*30px*/;
+    font-size: 1.7rem /*20px*/;
+    line-height: 2.2rem /*30px*/;
   }
 `;

@@ -90,15 +90,14 @@ const Home = ({ data }) => {
     e.preventDefault();
     const containErro = hasErro();
     setErro(containErro);
-    if (containErro.length === 0) {
-      setIsOpenAlert(!isOpenAlert);
-      setTimeAlert(
-        window.setTimeout(() => {
-          setIsOpenAlert(false);
-        }, 5000)
-      );
-      clearInputs();
-    }
+
+    setIsOpenAlert(!isOpenAlert);
+    setTimeAlert(
+      window.setTimeout(() => {
+        setIsOpenAlert(false);
+      }, 5000)
+    );
+    clearInputs();
   }
 
   function hasErro() {
@@ -125,7 +124,7 @@ const Home = ({ data }) => {
     setNewsLater(false);
     setTerms(false);
   }
-  
+
   return (
     <>
       <Header />
@@ -169,7 +168,10 @@ const Home = ({ data }) => {
               allowFullScreen
             ></iframe>
           </Container>
-          <ContainerText textAling="center" className="container--padding_vertical">
+          <ContainerText
+            textAling="center"
+            className="container--padding_vertical"
+          >
             <Title>SOLUÇÕES NEW HOLLAND</Title>
             <Paragraph>
               Os equipamentos da <b>New Holland</b> são
@@ -409,7 +411,11 @@ const Home = ({ data }) => {
           <Container>
             <Alert
               id="alert"
-              className={isOpenAlert ? "alert-open" : "alert-disabled"}
+              className={`${isOpenAlert ? "alert-open" : "alert-disabled"} ${
+                erro.length !== 0
+                  ? isOpenAlert ? "alert-error" : ""
+                  : isOpenAlert ? "alert-success" : ""
+              }`}
             >
               <ButtonClose
                 onClick={() => {
@@ -417,13 +423,21 @@ const Home = ({ data }) => {
                   setIsOpenAlert(!isOpenAlert);
                 }}
               />
-              <SubTitle theme={{ textColor: theme.colors.yellow }}>
-                Obrigado pelo seu contato!
-              </SubTitle>
-              <Paragraph>
-                Assim que um de nossos especialistas vizualizar sua mensagem,
-                entraremos em contato.
-              </Paragraph>
+              {erro.length === 0 ? (
+                <>
+                  <SubTitle theme={{ textColor: theme.colors.yellow }}>
+                    Obrigado pelo seu contato!
+                  </SubTitle>
+                  <Paragraph>
+                    Assim que um de nossos especialistas vizualizar sua
+                    mensagem, entraremos em contato.
+                  </Paragraph>
+                </>
+              ) : (
+                <Span theme={{ textColor: theme.colors.white }}>
+                  Preencha todos os campos corretamente
+                </Span>
+              )}
             </Alert>
           </Container>
         </section>

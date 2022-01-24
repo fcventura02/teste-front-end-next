@@ -6,22 +6,21 @@ export const AlertStyle = styled.div`
   max-width: 500px;
   overflow: hidden;
   padding: 20px;
-  background: ${({theme})=> theme.colors.white};
+  
+  background: ${({ theme }) => theme.colors.white};
   border-radius: 10px;
-  box-shadow: 0 0px 10px 1px ${({theme})=> theme.colors.gray};
+  box-shadow: 0 0px 10px 1px ${({ theme }) => theme.colors.gray};
 
   text-align: center;
 
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  z-index: 10;
   transition: all 0.3s ease-in;
 
   &.alert-open::after {
     content: "";
     height: 4px;
-    background: ${({theme})=> theme.colors.blue};
+    background: ${({ theme }) => theme.colors.blue};
     position: fixed;
     top: 0;
     left: 0;
@@ -40,6 +39,22 @@ export const AlertStyle = styled.div`
 
   &.alert-disabled {
     opacity: 0;
-    left: -500px;
+    top: 0;
+    left: calc(100vw + 500px) !important;
+  }
+
+  &.alert-error {
+    background: red;
+    top: 10px;
+    right: 0;
+    transform: translate(0%, 0%);
+    border-radius: 10px 0 0 10px;
+  }
+
+  &.alert-success {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
   }
 `;
