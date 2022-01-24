@@ -1,0 +1,20 @@
+{
+  "name": "teste-uaify",
+  "version": "1.0.0",
+  "description": "Teste para vaga de front-end",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "author": "Filipe Cristiano",
+  "license": "ISC",
+  "dependencies": {
+    "babel-plugin-styled-components": "^2.0.2",
+    "next": "^12.0.8",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.3.3"
+  }
+}
