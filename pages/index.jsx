@@ -37,10 +37,12 @@ const Home = ({ data }) => {
   const [newsLater, setNewsLater] = useState(false);
   const [terms, setTerms] = useState(false);
   function handleChangeName(e) {
+    closeAlert();
     setErro(erro.filter((er) => er !== "name"));
     setName(e.target.value);
   }
   function handleChangeTel(value) {
+    closeAlert();
     setErro(erro.filter((er) => er !== "tel"));
     setTel(
       value
@@ -51,10 +53,13 @@ const Home = ({ data }) => {
     );
   }
   function handleChangeEmail(e) {
+    closeAlert();
     setErro(erro.filter((er) => er !== "email"));
+    setTimeAlert(0);
     setEmail(e.target.value);
   }
   async function handleChangeState(e) {
+    closeAlert();
     setErro(erro.filter((er) => er !== "state"));
     setState(e.target.value);
     if (e.target.value.length === 2) {
@@ -66,14 +71,17 @@ const Home = ({ data }) => {
     }
   }
   function handleChangeCity(e) {
+    closeAlert();
     setErro(erro.filter((er) => er !== "city"));
     setCity(e.target.value);
   }
   function handleChangeProduct(e) {
+    closeAlert();
     setErro(erro.filter((er) => er !== "product"));
     setProduct(e.target.value);
   }
   function handleChangeTerms(e) {
+    closeAlert();
     setErro(erro.filter((er) => er !== "terms"));
     setTerms(e.target.checked);
   }
@@ -97,7 +105,7 @@ const Home = ({ data }) => {
         setIsOpenAlert(false);
       }, 5000)
     );
-    clearInputs();
+    if (containErro.length === 0) clearInputs();
   }
 
   function hasErro() {
@@ -123,6 +131,11 @@ const Home = ({ data }) => {
     setMessage("");
     setNewsLater(false);
     setTerms(false);
+  }
+
+  function closeAlert() {
+    window.clearInterval(timeAlert);
+    setIsOpenAlert(false);
   }
 
   return (
@@ -413,16 +426,15 @@ const Home = ({ data }) => {
               id="alert"
               className={`${isOpenAlert ? "alert-open" : "alert-disabled"} ${
                 erro.length !== 0
-                  ? isOpenAlert ? "alert-error" : ""
-                  : isOpenAlert ? "alert-success" : ""
+                  ? isOpenAlert
+                    ? "alert-error"
+                    : ""
+                  : isOpenAlert
+                  ? "alert-success"
+                  : ""
               }`}
             >
-              <ButtonClose
-                onClick={() => {
-                  window.clearInterval(timeAlert);
-                  setIsOpenAlert(!isOpenAlert);
-                }}
-              />
+              <ButtonClose onClick={() => closeAlert()} />
               {erro.length === 0 ? (
                 <>
                   <SubTitle theme={{ textColor: theme.colors.yellow }}>
