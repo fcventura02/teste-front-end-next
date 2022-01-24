@@ -7,17 +7,21 @@ export default createGlobalStyle`
 	box-sizing: border-box;
 	font-family: ${(props) => props.theme.font.family};
 }
-html{
-	scroll-behavior: smooth;
-	scroll-padding-top: 68px;
-}
-body{
-	background: ${(props) => props.theme.colors.background};
-	min-height: 100vh;
-}
 #__next{
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
+}
+
+::-webkit-scrollbar {
+	width: 16px;
+}
+
+::-webkit-scrollbar-thumb {
+	height: 56px;
+	border-radius: 8px;
+	border: 4px solid transparent;
+	background-clip: content-box;
+	background-color: var(--blue);
 }
 `;

@@ -4,6 +4,10 @@ export const TitleStyle = styled.h1`
   font-size: 4rem /*64px*/;
   line-height: 4.625rem /*74px*/;
   color: ${({ theme }) => theme.textColor};
+  text-align: center;
+  max-width: 500px;
+  margin: auto;
+  padding-bottom: 15px;
 `;
 
 export const SubTitleStyle = styled.h2`

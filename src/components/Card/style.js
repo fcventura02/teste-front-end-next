@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CardStyle = styled.div`
-  padding: 20px 0;
+  padding: 20px 0 60px;
 
   hr {
     width: 90%;
@@ -16,10 +16,10 @@ export const CardItemStyle = styled.div`
   justify-content: center;
   text-align: center;
   flex-wrap: wrap;
-  margin: 40px 0 80px;
+  padding: 0 0 80px;
 
   &:last-child {
-    margin: 80px 0 40px;
+    padding: 80px 0 40px;
   }
 
   img {

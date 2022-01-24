@@ -169,7 +169,7 @@ const Home = ({ data }) => {
               allowFullScreen
             ></iframe>
           </Container>
-          <ContainerText className="container--padding_vertical">
+          <ContainerText textAling="center" className="container--padding_vertical">
             <Title>SOLUÇÕES NEW HOLLAND</Title>
             <Paragraph>
               Os equipamentos da <b>New Holland</b> são

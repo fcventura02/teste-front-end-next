@@ -11,7 +11,8 @@ const theme = {
   },
   textColor: "#090A0A",
   font: {
-    family: `Open Sans`,
+    family: `"Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+    sans-serif`,
     regular: 400,
     medium: 500,
     extraBold: 800,
