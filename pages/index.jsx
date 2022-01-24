@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import theme from "../src/css/theme";
 import {
   Banner,
