@@ -20,11 +20,11 @@ import {
 } from "../src/components";
 import imgCabine from "../src/assets/img/cabineVehicle.png";
 import imgGestao from "../src/assets/img/software.png";
-import { getCits, getCitys, getStates } from "../src/service";
+import { getCitys, getStates } from "../src/service";
 
 const Home = ({ data }) => {
   const [isOpenAlert, setIsOpenAlert] = useState(false);
-  const [erro, setErro] = useState(["false"]);
+  const [erro, setErro] = useState([]);
   const [timeAlert, setTimeAlert] = useState();
   const [name, setName] = useState("");
   const [tel, setTel] = useState("");
@@ -75,7 +75,7 @@ const Home = ({ data }) => {
   }
   function handleChangeTerms(e) {
     setErro(erro.filter((er) => er !== "terms"));
-    setTerms(e.target.value);
+    setTerms(e.target.checked);
   }
 
   function validadeEmail(_email) {
@@ -88,26 +88,44 @@ const Home = ({ data }) => {
 
   function handleChangeSubmit(e) {
     e.preventDefault();
-    setErro([
-      name.trim() === "" && "name",
-      tel.trim() === "" && "tel",
-      (email.trim() === "" || !validadeEmail(email)) && "email",
-      state.trim() === "" && "state",
-      city.trim() === "" && "city",
-      product.trim() === "" && "product",
-      !terms && "terms",
-    ]);
-
-    if (erro.length === 0) {
+    const containErro = hasErro();
+    setErro(containErro);
+    if (containErro.length === 0) {
       setIsOpenAlert(!isOpenAlert);
       setTimeAlert(
         window.setTimeout(() => {
           setIsOpenAlert(false);
         }, 5000)
       );
+      clearInputs();
     }
   }
 
+  function hasErro() {
+    const isError = [];
+    name.trim() === "" && isError.push("name");
+    tel.trim() === "" && isError.push("tel");
+    (email.trim() === "" || !validadeEmail(email)) && isError.push("email");
+    state.trim() === "" && isError.push("state");
+    city.trim() === "" && isError.push("city");
+    product.trim() === "" && isError.push("product");
+    !terms && isError.push("terms");
+    return isError;
+  }
+
+  function clearInputs() {
+    setName("");
+    setTel("");
+    setEmail("");
+    setState("");
+    setCity("");
+    setListCity("");
+    setProduct("");
+    setMessage("");
+    setNewsLater(false);
+    setTerms(false);
+  }
+  
   return (
     <>
       <Header />
